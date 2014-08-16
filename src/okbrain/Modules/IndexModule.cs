@@ -1,7 +1,7 @@
-﻿namespace okbrain
-{
-    using Nancy;
+﻿using Nancy;
 
+namespace okbrain.Modules
+{
     public class IndexModule : NancyModule
     {
         public IndexModule()
