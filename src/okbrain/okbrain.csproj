@@ -61,7 +61,15 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-readable.css" />
+    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\nancy-logo.png" />
+    <Content Include="Content\okbrain.css">
+      <DependentUpon>okbrain.less</DependentUpon>
+    </Content>
+    <Content Include="Content\okbrain.min.css">
+      <DependentUpon>okbrain.less</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +83,7 @@
     <Content Include="packages.config" />
     <Content Include="Views\index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Content\okbrain.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
