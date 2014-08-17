@@ -44,3 +44,38 @@ body {
 #read-blog-section {
   margin-top: 150px;
 }
+.input-group {
+  margin: 20px auto;
+  width: 100%;
+}
+input.btn.btn-lg {
+  width: 60%;
+  height: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-color: #2aabd2;
+  border-right-style: none;
+}
+button.btn {
+  width: 40%;
+  height: 60px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.promise {
+  color: #999;
+}
+/*
+ * Footer
+ */
+.blog-footer {
+  margin-top: 70px;
+  padding: 40px 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+}
+.blog-footer p:last-child {
+  margin-bottom: 0;
+}
