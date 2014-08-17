@@ -61,6 +61,12 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\blog.css">
+      <DependentUpon>blog.less</DependentUpon>
+    </Content>
+    <Content Include="Content\blog.min.css">
+      <DependentUpon>blog.less</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-readable.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\nancy-logo.png" />
@@ -76,6 +82,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Models\PageModel.cs" />
     <Compile Include="Modules\BaseModule.cs" />
+    <Compile Include="Modules\BlogModule.cs" />
     <Compile Include="Modules\IndexModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,6 +91,8 @@
     <Content Include="Views\index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Content\okbrain.less" />
+    <Content Include="Views\blog.cshtml" />
+    <Content Include="Content\blog.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

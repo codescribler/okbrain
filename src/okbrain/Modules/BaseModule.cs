@@ -43,7 +43,5 @@ namespace okbrain.Modules
                 return null;
             };
         }
-
-
     }
 }
