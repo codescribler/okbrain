@@ -88,10 +88,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="Views\index.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\index.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Shared\_Layout.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\okbrain.less" />
-    <Content Include="Views\blog.cshtml" />
+    <Content Include="Views\blog.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\blog.less" />
     <Content Include="Views\Shared\_Navigation.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
