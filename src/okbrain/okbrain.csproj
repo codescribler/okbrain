@@ -93,7 +93,9 @@
     <Content Include="Content\okbrain.less" />
     <Content Include="Views\blog.cshtml" />
     <Content Include="Content\blog.less" />
-    <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\Shared\_Navigation.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
