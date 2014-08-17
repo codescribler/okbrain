@@ -111,6 +111,10 @@ h6,
 .navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
   border-bottom-color: #ffffff;
 }
+.breather {
+  min-height: 50px;
+  display: block;
+}
 .blog-masthead {
   background-color: #5cb85c;
   -webkit-box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);

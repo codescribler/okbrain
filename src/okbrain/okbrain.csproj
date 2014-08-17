@@ -84,6 +84,7 @@
     <Compile Include="Modules\BaseModule.cs" />
     <Compile Include="Modules\BlogModule.cs" />
     <Compile Include="Modules\IndexModule.cs" />
+    <Compile Include="Modules\PostModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +101,9 @@
     </Content>
     <Content Include="Content\blog.less" />
     <Content Include="Views\Shared\_Navigation.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\newpost.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Web.Debug.config">
