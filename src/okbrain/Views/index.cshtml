@@ -31,13 +31,15 @@
                             </div><br>
                             <div class="clearfix">
                                 
-                                <form class="form-inline" >
+                                <form class="form-inline" method="POST" action="/" name="subscribe">
                                     
                                     <div class="input-group">
                                         <input class="btn btn-lg input-email" name="email" id="email" type="email" placeholder="Your Email" required>
                                         <button class="btn btn-info btn-lg" type="submit">Start</button>
                                     </div>
-
+                                    <div class="real-test">
+                                        <input class="real-test-input" name="real" id="real" type="text" placeholder="If you are human, leave blank">
+                                    </div>
                                 </form>
                                 <small class="promise"><em>We promise, no spam and you can always unsubscribe!</em></small>
 	
@@ -72,4 +74,14 @@
       </p>
     </div>
 
+@section javascript{
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+    
+    <script>
 
+        var ViewModel = function() {
+
+        };
+
+    </script>
+}

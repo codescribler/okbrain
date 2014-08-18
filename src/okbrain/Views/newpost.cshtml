@@ -3,97 +3,99 @@
 }
 
 @section style {
-<link href="~/Content/blog.css" rel="stylesheet"/>
+    <link href="~/Content/blog.css" rel="stylesheet" />
 }
 
 @Html.Partial("Shared/_Navigation.cshtml")
 
-    <div class="container">
+<div class="breather"></div>
 
- 
+<div class="container">
 
-      <div class="row">
+    <div class="row">
 
         <div class="col-sm-12">
 
-          <form class="form-horizontal">
-<fieldset>
+            <form class="form-horizontal">
+                <fieldset>
 
-<!-- Form Name -->
-<legend>New Post</legend>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="title">Title</label>  
-  <div class="col-md-8">
-  <input id="title" name="title" type="text" placeholder="" class="form-control input-md" required="">
-    
-  </div>
-</div>
-
-<!-- Textarea -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="post">Post</label>
-  <div class="col-md-4">                     
-    <textarea class="form-control" id="post" name="post"></textarea>
-  </div>
-</div>
-
-<!-- Select Basic -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="category">Category</label>
-  <div class="col-md-8">
-    <select id="category" name="category" class="form-control">
-      <option value="1">Option one</option>
-      <option value="2">Option two</option>
-    </select>
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="tags">Tags</label>  
-  <div class="col-md-8">
-  <input id="tags" name="tags" type="text" placeholder="" class="form-control input-md">
-  <span class="help-block">comma separated tags</span>  
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="pubDate">Publish Date</label>  
-  <div class="col-md-4">
-  <input id="pubDate" name="pubDate" type="text" placeholder="" class="form-control input-md">
-    
-  </div>
-</div>
-
-<!-- Select Basic -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="status">Status</label>
-  <div class="col-md-4">
-    <select id="status" name="status" class="form-control">
-      <option value="1">Draft</option>
-      <option value="2">Live</option>
-    </select>
-  </div>
-</div>
-
-</fieldset>
-</form>
+                    <!-- Form Name -->
+                    <legend>New Post</legend>
 
 
-        </div><!-- /.blog-main -->
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="title">Title</label>
+                        <div class="col-md-8">
+                            <input id="title" name="title" type="text" placeholder="" class="form-control input-md" required="">
+                        </div>
+                    </div>
 
-        
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="post">Post</label>
+                        <div class="col-md-4">
+                            <textarea class="form-control" id="post" name="post" cols="30" rows="30"></textarea>
+                        </div>
+                    </div>
 
-      </div><!-- /.row -->
+                    <!-- Select Basic -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="category">Category</label>
+                        <div class="col-md-8">
+                            <select id="category" name="category" class="form-control">
+                                <option value="1">Option one</option>
+                                <option value="2">Option two</option>
+                            </select>
+                        </div>
+                    </div>
 
-    </div><!-- /.container -->
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="tags">Tags</label>
+                        <div class="col-md-8">
+                            <input id="tags" name="tags" type="text" placeholder="" class="form-control input-md">
+                            <span class="help-block">comma separated tags</span>
+                        </div>
+                    </div>
 
-    <div class="blog-footer">
-      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@@mdo</a>.</p>
-      <p>
-        <a href="#">Back to top</a>
-      </p>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="pubDate">Publish Date</label>
+                        <div class="col-md-4">
+                            <input id="pubDate" name="pubDate" type="text" placeholder="" class="form-control input-md">
+                        </div>
+                    </div>
+
+                    <!-- Select Basic -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="status">Status</label>
+                        <div class="col-md-4">
+                            <select id="status" name="status" class="form-control">
+                                <option value="1">Draft</option>
+                                <option value="2">Live</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+
+
+        </div>
+        <!-- /.blog-main -->
+
+
+
     </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<div class="blog-footer">
+    <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@@mdo</a>.</p>
+    <p>
+        <a href="#">Back to top</a>
+    </p>
+</div>
