@@ -33,7 +33,7 @@ namespace okbrain.Modules
                 Page = new PageModel()
                 {
                     IsAuthenticated = ctx.CurrentUser != null,
-                    PreFixTitle = "Dinner Party - ",
+                    PreFixTitle = "okbrain",
                     CurrentUser = ctx.CurrentUser != null ? ctx.CurrentUser.UserName : "",
                     Errors = new List<ErrorModel>()
                 };
