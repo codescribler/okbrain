@@ -80,7 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Extensions\Class1.cs" />
+    <Compile Include="Extensions\NegotiateExtensions.cs" />
     <Compile Include="Models\PageModel.cs" />
     <Compile Include="Modules\BaseModule.cs" />
     <Compile Include="Modules\BlogModule.cs" />
