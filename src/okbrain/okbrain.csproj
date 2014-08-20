@@ -61,6 +61,8 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\js\libs\knockout-3.2.0.js" />
+    <Content Include="Content\assets\js\libs\Markdown.Converter.js" />
     <Content Include="Content\blog.css">
       <DependentUpon>blog.less</DependentUpon>
     </Content>
