@@ -10,81 +10,120 @@
 
 <div class="breather"></div>
 
-<div class="container">
+<div class="container-fluid">
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well well-sm form-group form-inline">
+                <input type="submit" class="btn btn-primary" value="Save"/>
+                <input type="button" class="btn btn-warning" value="Publish"/>
+                <input type="button" class="btn btn-warning" value="Withdraw"/>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
 
-        <div class="col-sm-12">
+        <div class="col-sm-6">
+            <div class="well well-sm">
+                <form class="">
+                    <fieldset>
+                    
 
-            <form class="form-horizontal">
-                <fieldset>
-
-                    <!-- Form Name -->
-                    <legend>New Post</legend>
-
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="title">Title</label>
-                        <div class="col-md-8">
-                            <input id="title" name="title" type="text" placeholder="" class="form-control input-md" required="">
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input id="title" name="title" type="text" placeholder="Title" class="form-control input-lg" required="">
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Textarea -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="post">Post</label>
-                        <div class="col-md-4">
-                            <textarea class="form-control" id="post" name="post" cols="30" rows="30"></textarea>
+                        <!-- Textarea -->
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <textarea class="form-control input-lg" id="post" name="post" cols="30" rows="30"></textarea>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Select Basic -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="category">Category</label>
-                        <div class="col-md-8">
-                            <select id="category" name="category" class="form-control">
-                                <option value="1">Option one</option>
-                                <option value="2">Option two</option>
-                            </select>
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-md-12 control-label" for="category">Category</label>
+                            <div class="col-md-12">
+                                <select id="category" name="category" class="form-control">
+                                    <option value="1">Option one</option>
+                                    <option value="2">Option two</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="tags">Tags</label>
-                        <div class="col-md-8">
-                            <input id="tags" name="tags" type="text" placeholder="" class="form-control input-md">
-                            <span class="help-block">comma separated tags</span>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input id="tags" name="tags" type="text" placeholder="tags" class="form-control input-lg">
+                                <span class="help-block">comma separated tags</span>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="pubDate">Publish Date</label>
-                        <div class="col-md-4">
-                            <input id="pubDate" name="pubDate" type="text" placeholder="" class="form-control input-md">
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-12 control-label" for="pubDate">Publish Date</label>
+                            <div class="col-md-12">
+                                <input id="pubDate" name="pubDate" type="text" placeholder="" class="form-control input-lg">
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Select Basic -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="status">Status</label>
-                        <div class="col-md-4">
-                            <select id="status" name="status" class="form-control">
-                                <option value="1">Draft</option>
-                                <option value="2">Live</option>
-                            </select>
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-md-12 control-label" for="status">Status</label>
+                            <div class="col-md-12">
+                                <select id="status" name="status" class="form-control">
+                                    <option value="1">Draft</option>
+                                    <option value="2">Ready</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
+                        <div class="breather">&nbsp;</div>
+                        <div class="form-group form-inline">
+                            <input type="submit" class="btn btn-primary" value="Save"/>
+                            <input type="submit" class="btn btn-default" value="Cancel"/>
+                        </div>
+                    </fieldset>
+                </form>
 
-                </fieldset>
-            </form>
-
+            </div>
 
         </div>
         <!-- /.blog-main -->
-
+        
+        <div class="col-sm-6">
+            <h1 data-bind="text: title">Title</h1>
+            <p>This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
+            <hr>
+            <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+            <blockquote>
+              <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            </blockquote>
+            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+            <h2>Heading</h2>
+            <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            <h3>Sub-heading</h3>
+            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            <pre><code>Example code block</code></pre>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+            <h3>Sub-heading</h3>
+            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <ul>
+              <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+              <li>Donec id elit non mi porta gravida at eget metus.</li>
+              <li>Nulla vitae elit libero, a pharetra augue.</li>
+            </ul>
+            <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+            <ol>
+              <li>Vestibulum id ligula porta felis euismod semper.</li>
+              <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
+              <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
+            </ol>
+            <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
+        </div>
 
 
     </div>
@@ -99,3 +138,7 @@
         <a href="#">Back to top</a>
     </p>
 </div>
+
+@section javascript{
+    
+}
