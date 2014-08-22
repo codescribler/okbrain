@@ -1,12 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Nancy;
 using Nancy.ModelBinding;
+using Raven.Client;
+using Raven.Client.Linq;
+using okbrain.Models;
 
 namespace okbrain.Modules
 {
     public class IndexModule : BaseModule
     {
-        public IndexModule()
+        public IndexModule(IDocumentSession documentSession)
         {
             Get["/"] = parameters =>
                            {
@@ -28,13 +32,27 @@ namespace okbrain.Modules
                                 }
                                 else
                                 {
-                                    if (SimpleStore.Subscribers.Contains(email.Trim()))
+                                    email = email.Trim().ToLower();
+
+                                    RavenQueryStatistics stats;
+                                    documentSession.Query<Subscription>()
+                                                   .Where(s => s.Email == email)
+                                                   .Statistics(out stats);
+
+                                    if (stats.TotalResults > 0)
                                     {
                                         cr.Message = "Already subscribed";
                                     }
                                     else
                                     {
-                                        SimpleStore.Subscribers.Add(email.Trim());
+                                        var sub = new Subscription
+                                                      {
+                                                          Email = email,
+                                                          Source = "HomePage",
+                                                          SubscribedOn = DateTime.UtcNow
+                                                      };
+                                        documentSession.Store(sub);
+                                        documentSession.SaveChanges();
                                     }
                                 }
 
