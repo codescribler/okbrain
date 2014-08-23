@@ -82,13 +82,13 @@
     </Content>
     <Content Include="Content\bootstrap-readable.css" />
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\nancy-logo.png" />
     <Content Include="Content\okbrain.css">
       <DependentUpon>okbrain.less</DependentUpon>
     </Content>
     <Content Include="Content\okbrain.min.css">
       <DependentUpon>okbrain.less</DependentUpon>
     </Content>
+    <Content Include="Content\favicon.ico" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
