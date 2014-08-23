@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using okbrain.Domain.Messages;
+using okbrain.Models;
+
+namespace okbrain.Domain.Models
+{
+    public class Post
+    {
+        private PostDto _post;
+
+        public void CreatePost(CreatePost command)
+        {
+            _post = new PostDto();
+            _post.Slug = command.Slug;
+            _post.Title = command.Titles[0];
+            _post.Body = command.Body;
+            _post.Date = command.PostDate;
+            
+        }
+
+        public PostDto GetDto()
+        {
+            return _post;
+        }
+    }
+
+    public class CreatePost : CreateCommand
+    {
+        public readonly string Body;
+        public readonly List<string> Titles;
+        public readonly string Status;
+        public readonly DateTime PostDate;
+        public readonly string Author;
+        public readonly string Slug;
+
+        public CreatePost(string body, List<string> titles, string status, DateTime postDate, string author, string slug)
+        {
+            Body = body;
+            Titles = titles;
+            Status = status;
+            PostDate = postDate;
+            Author = author;
+            Slug = slug;
+        }
+    }
+}

@@ -73,6 +73,7 @@
   <ItemGroup>
     <Content Include="Content\assets\js\libs\knockout-3.2.0.js" />
     <Content Include="Content\assets\js\libs\Markdown.Converter.js" />
+    <Content Include="Content\assets\js\libs\underscore-1.6.min.js" />
     <Content Include="Content\blog.css">
       <DependentUpon>blog.less</DependentUpon>
     </Content>
@@ -92,9 +93,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Domain\Messages\Message.cs" />
+    <Compile Include="Domain\Models\Post.cs" />
+    <Compile Include="Domain\Services\PostService.cs" />
     <Compile Include="Extensions\NegotiateExtensions.cs" />
+    <Compile Include="Extensions\SlugExtension.cs" />
     <Compile Include="Models\IDto.cs" />
     <Compile Include="Models\PageModel.cs" />
+    <Compile Include="Modules\Admin\PostEditorModule.cs" />
     <Compile Include="Modules\BaseModule.cs" />
     <Compile Include="Modules\BlogModule.cs" />
     <Compile Include="Modules\IndexModule.cs" />
@@ -117,7 +123,7 @@
     <Content Include="Views\Shared\_Navigation.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\newpost.cshtml">
+    <Content Include="Views\posteditor.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Web.Debug.config">
@@ -127,7 +133,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

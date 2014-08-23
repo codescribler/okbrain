@@ -11,7 +11,7 @@
 <div class="breather"></div>
 
 <div class="container-fluid">
-    
+    <form class="" action="./new" method="POST">
     <div class="row">
         <div class="col-sm-12">
             <div class="well well-sm form-group form-inline">
@@ -26,21 +26,21 @@
 
         <div class="col-sm-6">
             <div class="well well-sm">
-                <form class="">
+                
                     <fieldset>
                     
 
                         <!-- Text input-->
                         <div class="form-group">
                             <div class="col-md-12">
-                                <input id="title" name="title" type="text" placeholder="Title" class="form-control input-lg" required="" data-bind="value: title, valueUpdate: 'afterkeydown'">
+                                <input id="title" name="title" type="text" placeholder="Title" class="form-control input-lg" required="" data-bind="textinput: title">
                             </div>
                         </div>
 
                         <!-- Textarea -->
                         <div class="form-group">
                             <div class="col-md-12">
-                                <textarea class="form-control input-lg" id="post" name="post" cols="30" rows="30" data-bind="value: body, valueUpdate: 'afterkeydown'"></textarea>
+                                <textarea class="form-control input-lg" id="body" name="body" cols="30" rows="30" data-bind="textinput: body"></textarea>
                             </div>
                         </div>
 
@@ -75,9 +75,7 @@
                         <div class="form-group">
                             <label class="col-md-12 control-label" for="status">Status</label>
                             <div class="col-md-12">
-                                <select id="status" name="status" class="form-control">
-                                    <option value="1">Draft</option>
-                                    <option value="2">Ready</option>
+                                <select id="status" name="status" class="form-control" data-bind="options: stati, value: status">
                                 </select>
                             </div>
                         </div>
@@ -123,6 +121,8 @@
 
             self.title = ko.observable('');
             self.body = ko.observable('');
+            self.stati = ['Live', 'Draft', 'Ready'];
+            self.status = ko.observable('Draft');
 
             self.post = ko.computed(function() {
                 var converter = new Markdown.Converter();

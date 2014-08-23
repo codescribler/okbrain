@@ -2,6 +2,7 @@
 using Nancy.TinyIoc;
 using Raven.Client;
 using Raven.Client.Document;
+using okbrain.Domain.Services;
 
 namespace okbrain
 {
@@ -37,6 +38,7 @@ namespace okbrain
             var documentSession = docStore.OpenSession();
 
             container.Register<IDocumentSession>(documentSession);
+            container.Register<IPostSlugDuplicateDetector, PostSlugDuplicateDetector>();
         }
     }
 }
