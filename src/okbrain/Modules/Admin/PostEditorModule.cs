@@ -20,8 +20,9 @@ namespace okbrain.Modules.Admin
 
             Post["/posts/new"] = parameters =>
                                      {
+                                         string pubDate = Request.Form.PubDate;
                                          CultureInfo provider = CultureInfo.InvariantCulture;
-                                         DateTime postDate = DateTime.ParseExact(Request.Form.PubDate.ToString(), "DD/MM/yyyy", provider);
+                                         DateTime postDate = DateTime.ParseExact(pubDate, "dd/MM/yyyy", provider);
                                          var titles = new List<string>
                                                                    {
                                                                        Request.Form.Title
