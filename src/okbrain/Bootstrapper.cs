@@ -18,6 +18,8 @@ namespace okbrain
         {
             base.ConfigureApplicationContainer(container);
 
+            StaticConfiguration.DisableErrorTraces = false;
+
             var store = new DocumentStore
             {
                 ConnectionStringName = "RavenDB"
@@ -39,6 +41,13 @@ namespace okbrain
 
             container.Register<IDocumentSession>(documentSession);
             container.Register<IPostSlugDuplicateDetector, PostSlugDuplicateDetector>();
+        }
+
+        protected override void ConfigureConventions(Nancy.Conventions.NancyConventions nancyConventions)
+        {
+            base.ConfigureConventions(nancyConventions);
+            //nancyConventions.StaticContentsConventions.Add(Nancy.Conventions.StaticContentConventionBuilder.AddDirectory("/", "public"));
+            
         }
     }
 }
