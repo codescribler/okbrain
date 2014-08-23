@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using Raven.Client;
@@ -19,7 +20,8 @@ namespace okbrain.Modules.Admin
 
             Post["/posts/new"] = parameters =>
                                      {
-                                         DateTime postDate = DateTime.Parse(Request.Form.PubDate.ToString());
+                                         CultureInfo provider = CultureInfo.InvariantCulture;
+                                         DateTime postDate = DateTime.ParseExact(Request.Form.PubDate.ToString(), "DD/MM/yyyy", provider);
                                          var titles = new List<string>
                                                                    {
                                                                        Request.Form.Title
