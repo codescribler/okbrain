@@ -45,16 +45,22 @@ namespace okbrain.Modules.Admin
                     .OrPartial(lastPost);
             };
 
-            //Get["/posts/edit/id/{Id}"] = paramters =>
-            //                                 {
-            //                                     //PostDto postDto = postRepo.GetById((Guid) paramters.Id);
-            //                                     PostDto postDto = session.Load<PostDto>("PostDtos/" + (Guid)paramters.Id);
+            Get["/posts/edit/id/{Id}"] = paramters =>
+            {
+                PostDto postDto = session.Load<PostDto>("PostDtos/" + (Guid)paramters.Id);
 
+                return Negotiate.WithView("posteditor")
+                .WithModel(postDto)
+                .OrPartial(postDto);
+            };
 
-            //                                     return Negotiate.WithView("posteditor")
-            //        .WithModel(postDto)
-            //        .OrPartial(postDto);
-            //                         };
+            Get["/posts"] = parameters =>
+                                {
+                                    var posts = session.Query<PostDto>();
+                                    return Negotiate.WithView("adminpostlist")
+                                        .WithModel(posts)
+                                        .OrPartial(posts);
+                                };
 
         }
 

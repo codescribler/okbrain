@@ -1,0 +1,20 @@
+﻿@using okbrain.Models
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@section style {
+    <link href="~/Content/blog.css" rel="stylesheet" />
+}
+
+@Html.Partial("Shared/_Navigation.cshtml")
+
+<div class="breather"></div>
+<h2>title</h2>
+<ul>
+    @foreach (PostDto post in Model)
+    {
+        <li>@post.Title</li>
+    }
+</ul>

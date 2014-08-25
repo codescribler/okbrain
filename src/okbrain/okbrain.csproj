@@ -89,6 +89,7 @@
       <DependentUpon>okbrain.less</DependentUpon>
     </Content>
     <Content Include="Content\favicon.ico" />
+    <Content Include="Views\favicon.ico" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -123,9 +124,10 @@
     <Content Include="Views\Shared\_Navigation.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\posteditor.cshtml">
+    <Content Include="Views\Admin\posteditor.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\Admin\adminpostlist.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
