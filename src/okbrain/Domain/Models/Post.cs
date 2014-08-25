@@ -12,6 +12,7 @@ namespace okbrain.Domain.Models
         public void CreatePost(CreatePost command)
         {
             _post = new PostDto();
+            _post.Id = command.AgId;
             _post.Slug = command.Slug;
             _post.Title = command.Titles[0];
             _post.Body = command.Body;
@@ -25,7 +26,7 @@ namespace okbrain.Domain.Models
         }
     }
 
-    public class CreatePost : CreateCommand
+    public class CreatePost : Command
     {
         public readonly string Body;
         public readonly List<string> Titles;
@@ -34,8 +35,9 @@ namespace okbrain.Domain.Models
         public readonly string Author;
         public readonly string Slug;
 
-        public CreatePost(string body, List<string> titles, string status, DateTime postDate, string author, string slug)
+        public CreatePost(Guid agId, string body, List<string> titles, string status, DateTime postDate, string author, string slug)
         {
+            AgId = agId;
             Body = body;
             Titles = titles;
             Status = status;

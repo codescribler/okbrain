@@ -13,13 +13,7 @@ namespace okbrain.Domain.Messages
     }
 
 
-    public class CreateCommand : Command
-    {
-        public CreateCommand()
-        {
-            AgId = Guid.NewGuid();
-        }
-    }
+    
 
     public abstract class Event : IMessage
     {

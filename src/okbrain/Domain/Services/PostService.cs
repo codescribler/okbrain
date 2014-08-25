@@ -14,11 +14,13 @@ namespace okbrain.Domain.Services
     {
         private readonly IPostSlugDuplicateDetector _postSlugDuplicateDetector;
         private readonly IDocumentSession _session;
+        private readonly IDictionary<Guid, PostDto> _posts; 
 
         public PostService(IDocumentSession session, IPostSlugDuplicateDetector postSlugDuplicateDetector)
         {
             _session = session;
             _postSlugDuplicateDetector = postSlugDuplicateDetector;
+            _posts = new Dictionary<Guid, PostDto>();
         }
 
         public void Handles(CreatePost command)
@@ -26,13 +28,20 @@ namespace okbrain.Domain.Services
             if(_postSlugDuplicateDetector.Exists(command.Titles[0].ToSlug())) throw new DuplicateSlugException();
 
             var post = new Post();
-            var cmd = new CreatePost(command.Body, command.Titles, command.Status, command.PostDate, command.Author,
+            var cmd = new CreatePost(command.AgId, command.Body, command.Titles, command.Status, command.PostDate, command.Author,
                                      command.Titles[0].ToSlug());
             post.CreatePost(cmd);
 
             var postDto = post.GetDto();
             _session.Store(postDto);
             _session.SaveChanges();
+
+            _posts[postDto.Id] =  postDto;
+        }
+
+        public PostDto GetLastPost(Guid id)
+        {
+            return _posts[id];
         }
 
         
