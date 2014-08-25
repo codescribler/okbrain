@@ -53,11 +53,18 @@
     <Reference Include="Nancy.ViewEngines.Razor">
       <HintPath>packages\Nancy.Viewengines.Razor.0.23.2\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Newtonsoft.Json.6.0.4\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Raven.Abstractions">
       <HintPath>packages\RavenDB.Client.2.5.2916\lib\net40\Raven.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Client.Lightweight">
       <HintPath>packages\RavenDB.Client.2.5.2916\lib\net40\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
+    <Reference Include="sdk">
+      <HintPath>..\libs\sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -73,6 +80,7 @@
   <ItemGroup>
     <Content Include="Content\assets\js\libs\knockout-3.2.0.js" />
     <Content Include="Content\assets\js\libs\Markdown.Converter.js" />
+    <Content Include="Content\assets\js\libs\moment-2.8.2.js" />
     <Content Include="Content\assets\js\libs\underscore-1.6.min.js" />
     <Content Include="Content\blog.css">
       <DependentUpon>blog.less</DependentUpon>
@@ -107,6 +115,7 @@
     <Compile Include="Modules\IndexModule.cs" />
     <Compile Include="Modules\PostModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ITaxonomy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

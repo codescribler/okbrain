@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using okbrain.Domain.Messages;
 using okbrain.Models;
+using okbrain.Services;
 
 namespace okbrain.Domain.Models
 {
@@ -9,7 +10,7 @@ namespace okbrain.Domain.Models
     {
         private PostDto _post;
 
-        public void CreatePost(CreatePost command)
+        public void CreatePost(CreatePost command, ITaxonomy taxonomy)
         {
             _post = new PostDto();
             _post.Id = command.AgId;
@@ -17,7 +18,8 @@ namespace okbrain.Domain.Models
             _post.Title = command.Titles[0];
             _post.Body = command.Body;
             _post.Date = command.PostDate;
-            
+            _post.Tags = taxonomy.GenerateTags(_post.Body);
+
         }
 
         public PostDto GetDto()

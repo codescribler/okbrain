@@ -7,6 +7,7 @@ using Raven.Client.Linq;
 using okbrain.Domain.Models;
 using okbrain.Extensions;
 using okbrain.Models;
+using okbrain.Services;
 
 namespace okbrain.Domain.Services
 {
@@ -14,13 +15,15 @@ namespace okbrain.Domain.Services
     {
         private readonly IPostSlugDuplicateDetector _postSlugDuplicateDetector;
         private readonly IDocumentSession _session;
-        private readonly IDictionary<Guid, PostDto> _posts; 
+        private readonly IDictionary<Guid, PostDto> _posts;
+        private readonly ITaxonomy _taxonomy;
 
-        public PostService(IDocumentSession session, IPostSlugDuplicateDetector postSlugDuplicateDetector)
+        public PostService(IDocumentSession session, IPostSlugDuplicateDetector postSlugDuplicateDetector, ITaxonomy taxonomy)
         {
             _session = session;
             _postSlugDuplicateDetector = postSlugDuplicateDetector;
             _posts = new Dictionary<Guid, PostDto>();
+            _taxonomy = taxonomy;
         }
 
         public void Handles(CreatePost command)
@@ -30,7 +33,7 @@ namespace okbrain.Domain.Services
             var post = new Post();
             var cmd = new CreatePost(command.AgId, command.Body, command.Titles, command.Status, command.PostDate, command.Author,
                                      command.Titles[0].ToSlug());
-            post.CreatePost(cmd);
+            post.CreatePost(cmd, _taxonomy);
 
             var postDto = post.GetDto();
             _session.Store(postDto);
@@ -80,7 +83,7 @@ namespace okbrain.Domain.Services
         private bool CountedExists(string slug, int count)
         {
             RavenQueryStatistics stats;
-            _session.Query<PostDto>().Where(p => p.Slug == slug).Statistics(out stats);
+            IRavenQueryable<PostDto> ravenQueryable = _session.Query<PostDto>().Where(p => p.Slug == slug).Statistics(out stats);
 
             if (stats.IsStale && count < _maxStaleQueryTries)
             {

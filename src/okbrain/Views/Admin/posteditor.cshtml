@@ -1,4 +1,6 @@
-﻿@{
+﻿@using okbrain.Extensions
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+@{
     Layout = "Shared/_Layout.cshtml";
 }
 
@@ -58,8 +60,14 @@
                         <!-- Text input-->
                         <div class="form-group">
                             <div class="col-md-12">
-                                <input id="tags" name="tags" type="text" placeholder="tags" class="form-control input-lg">
-                                <span class="help-block">comma separated tags</span>
+                                <strong><span class="col-md-12 control-label">Keywords</span></strong>
+                                <div class="col-md-12">
+                                    @foreach (string tag in Model.Tags)
+                                    {
+                                        <span class="label label-info">@tag</span>    
+                                    }
+                                    
+                                </div>
                             </div>
                         </div>
 
@@ -67,7 +75,7 @@
                         <div class="form-group">
                             <label class="col-md-12 control-label" for="pubDate">Publish Date</label>
                             <div class="col-md-12">
-                                <input id="pubDate" name="pubDate" type="text" placeholder="" class="form-control input-lg">
+                                <input id="pubDate" name="pubDate" type="text" placeholder="" class="form-control input-lg" data-bind="textinput: pubDate">
                             </div>
                         </div>
 
@@ -113,16 +121,24 @@
 @section javascript{
     <script src="/Content/assets/js/libs/knockout-3.2.0.js"></script>
     <script src="/Content/assets/js/libs/Markdown.Converter.js"></script>
+    <script src="/Content/assets/js/libs/moment-2.8.2.js"></script>
     
     <script type="text/javascript">
 
-        var ViewModel = function() {
+        var ViewModel = function(post) {
             var self = this;
 
-            self.title = ko.observable('');
-            self.body = ko.observable('');
+            self.title = ko.observable(post.title || '');
+            self.body = ko.observable(post.body || '');
             self.stati = ['Live', 'Draft', 'Ready'];
-            self.status = ko.observable('Draft');
+            self.status = ko.observable(post.status || 'Draft');
+
+            var pubDate = moment();
+            if (post.date) {
+                pubDate = moment(post.pubDate);
+            }
+
+            self.pubDate = ko.observable(pubDate.format("DD/MM/YYYY"));
 
             self.post = ko.computed(function() {
                 var converter = new Markdown.Converter();
@@ -131,7 +147,9 @@
             });
         };
 
-        var vm = new ViewModel();
+        var vb = @Html.Raw(ViewBag.JavaScript)
+
+        var vm = new ViewModel(vb);
         ko.applyBindings(vm);
     </script>
 }

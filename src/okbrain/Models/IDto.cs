@@ -35,6 +35,12 @@ namespace okbrain.Models
         public string Body { get; set; }
         public List<string> Tags { get; set; }
         public string Category { get; set; }
+        public string Status { get; set; }
+
+        public PostDto()
+        {
+            Status = "Draft";
+        }
 
         
     }

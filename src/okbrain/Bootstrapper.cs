@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Configuration;
 using Nancy.TinyIoc;
 using Raven.Client;
 using Raven.Client.Document;
 using okbrain.Domain.Services;
+using okbrain.Services;
 
 
 namespace okbrain
@@ -42,13 +44,23 @@ namespace okbrain
 
             container.Register(store, "DocStore");
 
+            string isLive = ConfigurationManager.AppSettings["live"];
+
+            if (string.IsNullOrEmpty(isLive))
+            {
+                container.Register<ITaxonomy, AlchemyTaxonomy>();
+            }
+            else
+            {
+                container.Register<ITaxonomy, LocalTaxonomyService>();
+            }
+            
+
         }
 
         protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
         {
             base.ConfigureRequestContainer(container, context);
-
-
 
             var docStore = container.Resolve<DocumentStore>("DocStore");
             var documentSession = docStore.OpenSession();
