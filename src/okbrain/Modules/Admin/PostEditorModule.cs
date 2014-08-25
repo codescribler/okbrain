@@ -31,11 +31,7 @@ namespace okbrain.Modules.Admin
 
             Post["/posts/new"] = parameters =>
             {
-                string pubDate = Request.Form.PubDate;
-
-
-                CultureInfo provider = CultureInfo.InvariantCulture;
-                DateTime postDate = DateTime.ParseExact(pubDate, "dd/MM/yyyy", provider);
+                var postDate = GetPostPubDate(Request.Form.PubDate);
                 Guid agId = Guid.NewGuid();
                 var titles = new List<string>
                                         {
@@ -68,6 +64,26 @@ namespace okbrain.Modules.Admin
                 .OrPartial(postDto);
             };
 
+            Post["/posts/edit/id"] = paramters =>
+            {
+                PostDto postDto = session.Load<PostDto>("PostDtos/" + (Guid)Request.Form.Id);
+
+                postDto.Body = Request.Form.Body;
+                postDto.Title = Request.Form.Title;
+                postDto.Status = Request.Form.Status;
+                postDto.Date = GetPostPubDate(Request.Form.PubDate);
+                
+                session.Store(postDto);
+                session.SaveChanges();
+
+                var settings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
+                ViewBag.JavaScript = JsonConvert.SerializeObject(postDto, Formatting.None, settings);
+
+                return Negotiate.WithView("posteditor")
+                .WithModel(postDto)
+                .OrPartial(postDto);
+            };
+
             Get["/posts"] = parameters =>
                                 {
                                     var posts = session.Query<PostDto>();
@@ -78,9 +94,25 @@ namespace okbrain.Modules.Admin
                                         .OrPartial(posts);
                                 };
 
+            Post["/posts/delete"] = parameters =>
+                                        {
+                                            session.Delete(session.Load<PostDto>("postDtos/" + Request.Form.Id));
+                                            session.SaveChanges();
+                                            
+                                            var posts = session.Query<PostDto>();
+
+                                            return Negotiate.WithView("adminpostlist")
+                                                .WithModel(posts)
+                                                .OrPartial(posts);
+                                        };
+
         }
 
-        
-
+        private DateTime GetPostPubDate(string pubDate)
+        {
+            CultureInfo provider = CultureInfo.InvariantCulture;
+            DateTime postDate = DateTime.ParseExact(pubDate, "dd/MM/yyyy", provider);
+            return postDate;
+        }
     }
 }

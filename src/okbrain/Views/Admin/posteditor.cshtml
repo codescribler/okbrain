@@ -13,7 +13,7 @@
 <div class="breather"></div>
 
 <div class="container-fluid">
-    <form class="" action="./new" method="POST">
+    <form class="" action="." method="POST">
     <div class="row">
         <div class="col-sm-12">
             <div class="well well-sm form-group form-inline">
@@ -75,7 +75,7 @@
                         <div class="form-group">
                             <label class="col-md-12 control-label" for="pubDate">Publish Date</label>
                             <div class="col-md-12">
-                                <input id="pubDate" name="pubDate" type="text" placeholder="" class="form-control input-lg" data-bind="textinput: pubDate">
+                                <input id="pubDate" name="pubDate" type="text" class="form-control input-lg" data-bind="textinput: pubDate">
                             </div>
                         </div>
 
@@ -93,7 +93,7 @@
                             <input type="submit" class="btn btn-default" value="Cancel"/>
                         </div>
                     </fieldset>
-                </form>
+               
 
             </div>
 
@@ -106,8 +106,9 @@
 
 
     </div>
-    <!-- /.row -->
-
+        <!-- /.row -->
+        <input type="hidden" name="Id" value="@Model.Id"/>
+ </form>
 </div>
 <!-- /.container -->
 
@@ -151,5 +152,6 @@
 
         var vm = new ViewModel(vb);
         ko.applyBindings(vm);
+        
     </script>
 }

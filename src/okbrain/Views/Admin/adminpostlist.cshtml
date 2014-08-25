@@ -29,7 +29,7 @@
                         <tr>
                             <td><a href="~/admin/posts/edit/id/@post.Id">@post.Title</a></td>
                             <td>@post.Status</td>
-                            <td></td>
+                            <td><a href="#" class="btn btn-warning" data-bind='click:function () { deletePost("@post.Id") };'>X</a></td>
                         </tr>
                     }
                 </tbody>
@@ -38,4 +38,22 @@
     </div>
 </div>
 
+@section javascript{
+    
+    <script src="/Content/assets/js/libs/knockout-3.2.0.js"></script>
+    <script type="text/javascript">
 
+        var ViewModel = function () {
+            var self = this;
+
+            self.deletePost = function(id) {
+                $.post("/admin/posts/delete", { id: id }, function (result) {
+                    location.reload();
+                });
+            };
+        };
+
+        ko.applyBindings(new ViewModel());
+
+    </script>
+    }
