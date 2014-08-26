@@ -12,26 +12,20 @@
 <div class="breather"></div>
 <div class="container">
 
-@*      <div class="blog-header">
-        <h1 class="blog-title">The Bootstrap Blog</h1>
-        <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
-      </div>*@
+
 
       <div class="row">
 
         <div class="col-sm-8 blog-main">
 
-            <div class="blog-post" data-bind="foreach: posts">
-                
-                <h2 class="blog-post-title"><a href="#" data-bind="text: title, attr: { href: url, title: title }"></a></h2>
-                <p class="blog-post-meta"><span data-bind="text: moment(date).format('D MMMM, YYYY')"></span> by <a href="#">Daniel Whittaker</a></p>
+          <div class="blog-post">
+            <h1 class="blog-post-title">@Model.Title</h1>
+              <p class="blog-post-meta"><span data-bind="text: pubDate"></span> by <a href="#">Daniel Whittaker</a></p>
               
-                <div data-bind="html: teaser"></div>
-                <a href="" class="pull-right" data-bind="attr: { href: url, title: title }">Continue reading ...</a>
-                <hr class="post-divider"/>
+              <div data-bind="html: body"></div>
+              
+              
             </div><!-- /.blog-post -->
-
-           
 
         </div><!-- /.blog-main -->
 
@@ -89,13 +83,13 @@
         var ViewModel = function(posts) {
             var self = this;
 
-            var allPosts = [];
-            for (i = 0; i < posts.length; i++) {
-                posts[i].url = "/blog/" + posts[i].slug;
-                allPosts.push(posts[i]);
-            }
-            
-            self.posts = ko.observableArray(allPosts);
+            self.title = ko.observable(posts.title || "");
+            self.body = ko.computed(function (){
+                var converter = new Markdown.Converter();
+                return converter.makeHtml(posts.body);
+            });
+            self.pubDate = ko.observable(moment(posts.date).format('DD MMMM, YYYY'));
+
         };
 
         var vb = @Html.Raw(ViewBag.JavaScript)

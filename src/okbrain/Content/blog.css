@@ -166,6 +166,9 @@ h6,
   font-size: 20px;
   color: #999;
 }
+.post-divider {
+  margin-top: 40px;
+}
 /*
  * Main column and sidebar layout
  */

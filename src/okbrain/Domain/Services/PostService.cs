@@ -31,7 +31,7 @@ namespace okbrain.Domain.Services
             if(_postSlugDuplicateDetector.Exists(command.Titles[0].ToSlug())) throw new DuplicateSlugException();
 
             var post = new Post();
-            var cmd = new CreatePost(command.AgId, command.Body, command.Titles, command.Status, command.PostDate, command.Author,
+            var cmd = new CreatePost(command.AgId, command.Body, command.Teaser, command.EmailTeaser, command.Titles, command.Status, command.PostDate, command.Author,
                                      command.Titles[0].ToSlug());
             post.CreatePost(cmd, _taxonomy);
 

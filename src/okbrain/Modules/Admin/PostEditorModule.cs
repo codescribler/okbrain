@@ -42,7 +42,7 @@ namespace okbrain.Modules.Admin
                                         {
                                             Request.Form.Title
                                         };
-                var createPost = new CreatePost(agId, Request.Form.Body, titles,
+                var createPost = new CreatePost(agId, Request.Form.Body, Request.Form.Teaser, Request.Form.EmailTeaser, titles,
                                                 Request.Form.Status, postDate,
                                                 "Daniel Whittaker", "");
                 postService.Handles(createPost);
@@ -76,6 +76,8 @@ namespace okbrain.Modules.Admin
                 postDto.Body = Request.Form.Body;
                 postDto.Title = Request.Form.Title;
                 postDto.Status = Request.Form.Status;
+                postDto.Teaser = Request.Form.Teaser;
+                postDto.EmailTeaser = Request.Form.EmailTeaser;
                 postDto.Date = GetPostPubDate(Request.Form.PubDate);
                 
                 session.Store(postDto);

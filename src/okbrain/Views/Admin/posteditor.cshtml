@@ -45,9 +45,25 @@
                                 <textarea class="form-control input-lg" id="body" name="body" cols="30" rows="30" data-bind="textinput: body"></textarea>
                             </div>
                         </div>
+                        
+                        <!-- Teaser -->
+                        <div class="form-group">
+                            <label class="col-md-12 control-label" for="category">Teaser</label>
+                            <div class="col-md-12">
+                                <textarea class="form-control input-lg" id="teaser" name="teaser" cols="30" rows="5" data-bind="textinput: teaser"></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Email Teaser -->
+                        <div class="form-group">
+                            <label class="col-md-12 control-label" for="category">Email Teaser</label>
+                            <div class="col-md-12">
+                                <textarea class="form-control input-lg" id="emailTeaser" name="emailTeaser" cols="30" rows="5" data-bind="textinput: emailTeaser"></textarea>
+                            </div>
+                        </div>
 
                         <!-- Select Basic -->
-                        <div class="form-group">
+                        @*<div class="form-group">
                             <label class="col-md-12 control-label" for="category">Category</label>
                             <div class="col-md-12">
                                 <select id="category" name="category" class="form-control">
@@ -55,7 +71,7 @@
                                     <option value="2">Option two</option>
                                 </select>
                             </div>
-                        </div>
+                        </div>*@
 
                         <!-- Text input-->
                         <div class="form-group">
@@ -131,6 +147,8 @@
 
             self.title = ko.observable(post.title || '');
             self.body = ko.observable(post.body || '');
+            self.teaser = ko.observable(post.teaser || '');
+            self.emailTeaser = ko.observable(post.emailTeaser || '');
             self.stati = ['Live', 'Draft', 'Ready'];
             self.status = ko.observable(post.status || 'Draft');
 

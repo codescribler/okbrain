@@ -37,9 +37,16 @@ namespace okbrain.Models
         public string Category { get; set; }
         public string Status { get; set; }
 
+        public string Teaser{ get; set; }
+        public string EmailTeaser { get; set; }
+        
+
         public PostDto()
         {
             Status = "Draft";
+            Teaser = "";
+            EmailTeaser = "";
+            Tags = new List<string>();
         }
 
         
