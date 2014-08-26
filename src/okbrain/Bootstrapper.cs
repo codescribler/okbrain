@@ -21,12 +21,6 @@ namespace okbrain
         {
             base.ApplicationStartup(container, pipelines);
 
-            //container.RegisterMultiple(typeof(IRepo<>),
-            //                           AppDomain.CurrentDomain.GetAssemblies()
-            //                                    .ToList()
-            //                                    .SelectMany(s => s.GetTypes())
-            //                                    .Where(x => x.IsAssignableFrom(x) && x.IsClass)
-            //                                    .ToList());
         }
 
         protected override void ConfigureApplicationContainer(TinyIoCContainer container)
@@ -48,11 +42,11 @@ namespace okbrain
 
             if (string.IsNullOrEmpty(isLive))
             {
-                container.Register<ITaxonomy, AlchemyTaxonomy>();
+                container.Register<ITaxonomy, LocalTaxonomyService>();
             }
             else
             {
-                container.Register<ITaxonomy, LocalTaxonomyService>();
+                container.Register<ITaxonomy, AlchemyTaxonomy>();
             }
             
 
@@ -67,13 +61,6 @@ namespace okbrain
 
             container.Register<IDocumentSession>(documentSession);
             container.Register<IPostSlugDuplicateDetector, PostSlugDuplicateDetector>();
-
-            //var type = typeof(IDto);
-            //var types = AppDomain.CurrentDomain.GetAssemblies().ToList()
-            //    .SelectMany(s => s.GetTypes())
-            //    .Where(x => type.IsAssignableFrom(x) && x.IsClass);
-            //container.RegisterMultiple<IDto>(types.ToArray());
-            //container.Register(typeof(IRepo<>), typeof(RavenRepo<>)).AsMultiInstance(); 
 
         }
 

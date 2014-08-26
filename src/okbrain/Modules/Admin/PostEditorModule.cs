@@ -22,6 +22,11 @@ namespace okbrain.Modules.Admin
             Get["/posts/new"] = parameters =>
                                     {
                                         var postDto = new PostDto();
+                                        postDto.Body = "";
+                                        postDto.Title = "";
+                                        postDto.Status = "Draft";
+                                        postDto.Date = DateTime.UtcNow;
+                                        postDto.Tags = new List<string>();
                                         var settings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
                                         ViewBag.JavaScript = JsonConvert.SerializeObject(postDto, Formatting.None, settings);
                 return Negotiate.WithView("posteditor")
@@ -108,7 +113,7 @@ namespace okbrain.Modules.Admin
 
         }
 
-        private DateTime GetPostPubDate(string pubDate)
+        private static DateTime GetPostPubDate(string pubDate)
         {
             CultureInfo provider = CultureInfo.InvariantCulture;
             DateTime postDate = DateTime.ParseExact(pubDate, "dd/MM/yyyy", provider);
