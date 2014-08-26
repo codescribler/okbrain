@@ -12,6 +12,7 @@ namespace okbrain.Models
         public bool IsAuthenticated { get; set; }
         public string CurrentUser { get; set; }
         public List<ErrorModel> Errors { get; set; }
+        public bool IsLive { get; set; }
     }
 
     public class ErrorModel

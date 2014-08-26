@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Dynamic;
 using System.Linq;
 using System.Web;
@@ -35,10 +36,11 @@ namespace okbrain.Modules
                     IsAuthenticated = ctx.CurrentUser != null,
                     PreFixTitle = "okbrain",
                     CurrentUser = ctx.CurrentUser != null ? ctx.CurrentUser.UserName : "",
-                    Errors = new List<ErrorModel>()
+                    Errors = new List<ErrorModel>(),
+                    IsLive = !string.IsNullOrEmpty(ConfigurationManager.AppSettings["Live"])
                 };
 
-                Model.Page = Page;
+                ViewBag.Page = Page;
 
                 return null;
             };
