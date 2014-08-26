@@ -36,11 +36,11 @@ namespace okbrain.Modules
                     IsAuthenticated = ctx.CurrentUser != null,
                     PreFixTitle = "okbrain",
                     CurrentUser = ctx.CurrentUser != null ? ctx.CurrentUser.UserName : "",
-                    Errors = new List<ErrorModel>(),
-                    IsLive = !string.IsNullOrEmpty(ConfigurationManager.AppSettings["Live"])
+                    Errors = new List<ErrorModel>()
                 };
 
                 ViewBag.Page = Page;
+                ViewBag.IsLive = !string.IsNullOrEmpty(ConfigurationManager.AppSettings["Live"]);
 
                 return null;
             };
