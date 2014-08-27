@@ -10,7 +10,7 @@ namespace okbrain.Infrastructure
     {
         public dynamic Process(NancyModule nancyModule, AuthenticateCallbackData model)
         {
-            return nancyModule.View["AuthenticateCallback", model];
+            return nancyModule.View["AuthenticationCallback", model];
         }
 
         public dynamic OnRedirectToAuthenticationProviderError(NancyModule nancyModule, string errorMessage)
