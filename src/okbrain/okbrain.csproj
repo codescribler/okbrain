@@ -116,6 +116,7 @@
     <Compile Include="Domain\Services\PostService.cs" />
     <Compile Include="Extensions\NegotiateExtensions.cs" />
     <Compile Include="Extensions\SlugExtension.cs" />
+    <Compile Include="Infrastructure\SampleAuthenticationCallbackProvider.cs" />
     <Compile Include="Models\IDto.cs" />
     <Compile Include="Models\PageModel.cs" />
     <Compile Include="Modules\Admin\PostEditorModule.cs" />
@@ -156,9 +157,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
