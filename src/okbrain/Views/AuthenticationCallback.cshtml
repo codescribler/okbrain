@@ -1,16 +1,16 @@
-﻿@inherits NancyRazorViewBase<dynamic>
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
 @{
-    Layout = null;
+    Layout = "Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+@section style {
+<link href="~/Content/blog.css" rel="stylesheet"/>
+}
 
-<html>
-    <head>
-        <title>Client Details</title>
-        <link rel="stylesheet" type="text/css" href="/Content/main.css" />
-    </head>
-    <body>
+@Html.Partial("Shared/_Navigation.cshtml")
+
+<div class="breather"></div>
         <div id="usercontainer">
             <h1>Authenticated Client</h1>
 
@@ -45,5 +45,3 @@
             <p align="center"><a href="/">Lets go back home.</a></p>
 
         </div>
-    </body>
-</html>
