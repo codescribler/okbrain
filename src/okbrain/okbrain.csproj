@@ -47,6 +47,9 @@
     <Reference Include="Nancy">
       <HintPath>packages\Nancy.0.23.2\lib\net40\Nancy.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy.Authentication.Forms">
+      <HintPath>packages\Nancy.Authentication.Forms.0.23.2\lib\net40\Nancy.Authentication.Forms.dll</HintPath>
+    </Reference>
     <Reference Include="Nancy.Hosting.Aspnet">
       <HintPath>packages\Nancy.Hosting.Aspnet.0.23.2\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
     </Reference>
@@ -119,12 +122,17 @@
     <Compile Include="Infrastructure\SampleAuthenticationCallbackProvider.cs" />
     <Compile Include="Models\IDto.cs" />
     <Compile Include="Models\PageModel.cs" />
+    <Compile Include="Models\PostDto.cs" />
+    <Compile Include="Models\Subscription.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Modules\Account\AccountModule.cs" />
     <Compile Include="Modules\Admin\PostEditorModule.cs" />
     <Compile Include="Modules\BaseModule.cs" />
     <Compile Include="Modules\BlogModule.cs" />
     <Compile Include="Modules\IndexModule.cs" />
     <Compile Include="Modules\PostModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IAuthenticationService.cs" />
     <Compile Include="Services\ITaxonomy.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +159,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\AuthenticationCallback.cshtml" />
+    <Content Include="Views\Account\login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

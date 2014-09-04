@@ -1,5 +1,7 @@
 ﻿
 
+using okbrain.Services;
+
 namespace okbrain.Infrastructure
 {
     using Models;
@@ -8,8 +10,20 @@ namespace okbrain.Infrastructure
 
     public class SampleAuthenticationCallbackProvider : IAuthenticationCallbackProvider
     {
+        private IAuthenticationService _authenticationService;
+
+        public SampleAuthenticationCallbackProvider(IAuthenticationService authenticationService)
+        {
+            _authenticationService = authenticationService;
+        }
+
         public dynamic Process(NancyModule nancyModule, AuthenticateCallbackData model)
         {
+            string providerName = model.AuthenticatedClient.ProviderName;
+            //model.AuthenticatedClient.UserInformation.Id
+
+            
+
             return nancyModule.View["AuthenticationCallback", model];
         }
 

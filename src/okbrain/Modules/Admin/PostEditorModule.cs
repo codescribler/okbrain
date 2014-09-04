@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using Nancy;
+using Nancy.Security;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Raven.Client;
@@ -19,6 +20,8 @@ namespace okbrain.Modules.Admin
     {
         public PostEditorModule(PostService postService, IDocumentSession session) : base("/admin")
         {
+            this.RequiresAuthentication();
+
             Get["/posts/new"] = parameters =>
                                     {
                                         var postDto = new PostDto();

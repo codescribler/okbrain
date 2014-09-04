@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Configuration;
+using Nancy.Authentication.Forms;
+using Nancy.Bootstrapper;
 using Nancy.TinyIoc;
 using Raven.Client;
 using Raven.Client.Document;
 using okbrain.Domain.Services;
+using okbrain.Models;
 using okbrain.Services;
 
 
@@ -61,7 +64,20 @@ namespace okbrain
 
             container.Register<IDocumentSession>(documentSession);
             container.Register<IPostSlugDuplicateDetector, PostSlugDuplicateDetector>();
+            container.Register<IUserMapper, User>();
+        }
 
+        protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
+        {
+            base.RequestStartup(container, pipelines, context);
+
+            var formsAuthConfiguration = new FormsAuthenticationConfiguration
+            {
+                RedirectUrl = "~/login",
+                UserMapper = container.Resolve<IUserMapper>(),
+            };
+
+            FormsAuthentication.Enable(pipelines, formsAuthConfiguration);
         }
 
         protected override void ConfigureConventions(Nancy.Conventions.NancyConventions nancyConventions)
